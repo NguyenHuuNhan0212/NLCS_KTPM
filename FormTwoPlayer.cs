@@ -425,6 +425,12 @@ namespace NimProject
                 blinkState = false;
                 MessageBox.Show("Người chơi 2 suy nghĩ quá lâu, bỏ lượt!!!", "Thông báo!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 player1Turn = !player1Turn;
+                // Doan nay khi nop bao cao xong thay them doan nay hop ly hon nen bo sung
+                LayBatKy("Người chơi 2");
+                saveStateGame("Người chơi 2");
+                checkGameOver("Người chơi 2", "D:\\chienThang.mp3");
+                updateUI();
+                //Ket thuc phan bo sung 
                 UpdateLabel();
             }else if((thinking2 >= maxThinking - 5) && (thinking2 < maxThinking) && !isBlinking)
             {
@@ -463,6 +469,13 @@ namespace NimProject
                 blinkState = false;
                 MessageBox.Show("Người chơi 1 suy nghĩ quá lâu, bỏ lượt!!!", "Thông báo!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 player1Turn = !player1Turn;
+                // Doan nay khi nop bao cao xong thay them doan nay hop ly hon nen bo sung
+                // Chinh sua messageBox neu can 
+                LayBatKy("Người chơi 1");
+                saveStateGame("Người chơi 1");
+                checkGameOver("Người chơi 1", "D:\\chienThang.mp3");
+                updateUI();
+                //Ket thuc phan bo sung 
                 UpdateLabel();
             }
             else if ((thinking1 >= maxThinking - 5) && (thinking1 < maxThinking) && !isBlinking)
@@ -470,6 +483,18 @@ namespace NimProject
                 isBlinking = true;
                 defaultColor = lblTimePlayer1.ForeColor;
                 blinkTimer.Start();
+            }
+        }
+        private void LayBatKy(string playerName)
+        {
+            for (int i = 0; i < piles.Length; i++)
+            {
+                if (piles[i] > 0)
+                {
+                    piles[i] -= 1;
+                    lstHistory.Items.Add($"{playerName} lấy 1 que từ chồng {i + 1}");
+                    break;
+                }
             }
         }
     }
