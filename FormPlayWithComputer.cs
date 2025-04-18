@@ -252,6 +252,7 @@ namespace NimProject
                 if (result == DialogResult.OK) {
                     stopSound();
                     btnReset_Click(this, EventArgs.Empty);
+                    //InitializeGame();
                 }else 
                 {
                     stopSound();
@@ -344,7 +345,7 @@ namespace NimProject
 
         private void btnLogOut_Click(object sender, EventArgs e)
         {
-            System.IO.File.Delete("state_game.txt");
+            //System.IO.File.Delete("state_game.txt");
             this.Hide();
             formStart.Show();
         }

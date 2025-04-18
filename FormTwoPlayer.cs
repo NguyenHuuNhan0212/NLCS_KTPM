@@ -82,11 +82,11 @@ namespace NimProject
             }
             return true;
         }
-        private void checkGameOver(string lastPlayer, string path)
+        private void checkGameOver(string lastPlayer, string pathFile)
         {
             if (isGameOver())
             {
-                playSound(path);
+                playSound(pathFile);
                 timer1.Stop();
                 timer2.Stop();
                 lblPlayer1.Text = "";
@@ -231,6 +231,8 @@ namespace NimProject
                 lstHistory.Items.Add($"{playerName} lấy {playerMove} que từ chồng {pileIndex + 1}");
                 player1Turn = !player1Turn;
                 UpdateLabel();
+                //
+                saveStateGame(playerName);
                 checkGameOver(playerName, "D:\\chienThang.mp3");
                 
             }
@@ -252,7 +254,6 @@ namespace NimProject
             if (player1Turn)
             {
                 handlePlayerMove(cboPile1, numerPlayer1Move, "Người chơi 1");
-                saveStateGame("Người chơi 1");
 
             }else
             {
@@ -267,7 +268,6 @@ namespace NimProject
             if (!player1Turn)
             {
                 handlePlayerMove(cboPile2, numerPlayer2Move, "Người chơi 2");
-                saveStateGame("Người chơi 2");
             }
             else
             {
@@ -293,7 +293,9 @@ namespace NimProject
                                 "3.Khi chọn hoàn tất người chơi nhấn nút \"Lấy\" để thực hiện lượt đi của mình.\n" +
                                 "4.Trò chơi kết thúc khi không còn viên gạch nào để lấy.\n" +
                                 "5.Mỗi người chơi có 15 giây để suy nghĩ và thực hiện lượt đi.\n"+
-                                "6.Người lấy gạch cuối cùng là người chiến thắng.\n\n\n" +
+                                "6.Người lấy gạch cuối cùng là người chiến thắng.\n" +
+                                "7. Nếu hết thời gian qui định mà người chơi không thực hiện nước đi, " +
+                                "chương trình sẽ tự chọn một viên gạch ở chồng bất kỳ để lấy.\n\n\n"+
                                 "Người phát triển: Nguyễn Hữu Nhân.\n" +
                                 "MSSV: B2203517.\n" +
                                 "Năm: 2024-2025";
@@ -367,7 +369,7 @@ namespace NimProject
             thinking1 = 0;
             timer2.Stop();
             thinking2 = 0 ;
-            System.IO.File.Delete("state_game_two_player.txt");
+            //System.IO.File.Delete("state_game_two_player.txt");
             this.Hide();
             formStart.Show();
         }
@@ -425,12 +427,12 @@ namespace NimProject
                 blinkState = false;
                 MessageBox.Show("Người chơi 2 suy nghĩ quá lâu, bỏ lượt!!!", "Thông báo!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 player1Turn = !player1Turn;
-                // Doan nay khi nop bao cao xong thay them doan nay hop ly hon nen bo sung
+                // 18-4
                 LayBatKy("Người chơi 2");
                 saveStateGame("Người chơi 2");
                 checkGameOver("Người chơi 2", "D:\\chienThang.mp3");
                 updateUI();
-                //Ket thuc phan bo sung 
+                //
                 UpdateLabel();
             }else if((thinking2 >= maxThinking - 5) && (thinking2 < maxThinking) && !isBlinking)
             {
@@ -469,13 +471,12 @@ namespace NimProject
                 blinkState = false;
                 MessageBox.Show("Người chơi 1 suy nghĩ quá lâu, bỏ lượt!!!", "Thông báo!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 player1Turn = !player1Turn;
-                // Doan nay khi nop bao cao xong thay them doan nay hop ly hon nen bo sung
-                // Chinh sua messageBox neu can 
+                // 18-4
                 LayBatKy("Người chơi 1");
                 saveStateGame("Người chơi 1");
                 checkGameOver("Người chơi 1", "D:\\chienThang.mp3");
                 updateUI();
-                //Ket thuc phan bo sung 
+                // 
                 UpdateLabel();
             }
             else if ((thinking1 >= maxThinking - 5) && (thinking1 < maxThinking) && !isBlinking)
@@ -485,6 +486,7 @@ namespace NimProject
                 blinkTimer.Start();
             }
         }
+        // 18-4
         private void LayBatKy(string playerName)
         {
             for (int i = 0; i < piles.Length; i++)

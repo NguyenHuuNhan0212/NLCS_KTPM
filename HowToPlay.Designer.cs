@@ -36,10 +36,10 @@
             // richTextBox
             // 
             this.richTextBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.richTextBox.Location = new System.Drawing.Point(88, 54);
+            this.richTextBox.Location = new System.Drawing.Point(64, 36);
             this.richTextBox.Name = "richTextBox";
             this.richTextBox.ReadOnly = true;
-            this.richTextBox.Size = new System.Drawing.Size(733, 329);
+            this.richTextBox.Size = new System.Drawing.Size(847, 373);
             this.richTextBox.TabIndex = 0;
             this.richTextBox.Text = "";
             // 
@@ -48,7 +48,7 @@
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.BackColor = System.Drawing.Color.LightGreen;
             this.btnClose.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(739, 443);
+            this.btnClose.Location = new System.Drawing.Point(811, 444);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(145, 49);
             this.btnClose.TabIndex = 1;
@@ -64,7 +64,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(927, 535);
+            this.ClientSize = new System.Drawing.Size(999, 536);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.richTextBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
