@@ -239,11 +239,11 @@ namespace NimProject
         }
 
 
-        private  void checkGameOver(string lastPlayer, string path)
+        private  void checkGameOver(string lastPlayer, string pathFile)
         {
             if (isGameOver())
             {
-                playSound(path);
+                playSound(pathFile);
                 timer.Stop();
                 UpdateUI();
                 DialogResult result = MessageBox.Show($"{lastPlayer} thắng cuộc trong thời gian {playTime} \nBạn có muốn chơi tiếp không",
@@ -259,7 +259,6 @@ namespace NimProject
                     this.Close();
                     formStart.Show();
                 }
-                
             }
             else
             {
