@@ -210,8 +210,8 @@ namespace NimProject
             }
             piles[pileIndex] -= move;
             lstHistory.Items.Add($"Máy tính lấy {move} viên từ chồng {pileIndex+1}");
-            saveStateGame("Máy Tính");
-            checkGameOver("Máy Tính", "C:\\Users\\PC\\OneDrive\\Desktop\\Ct239_NLCS\\NimUpdate\\thatBai.mp3");
+            saveStateGame("Computer");
+            checkGameOver("Computer", "C:\\Users\\PC\\OneDrive\\Desktop\\Ct239_NLCS\\NimUpdate\\thatBai.mp3");
         }
         private void suggestMove()
         {
