@@ -356,7 +356,7 @@ namespace NimProject
         {
             timer1.Stop();
             timer2.Stop();
-            System.IO.File.Delete("state_game_two_player.txt");
+            //System.IO.File.Delete("state_game_two_player.txt");
             this.Hide();
             formStart.Show();
         }

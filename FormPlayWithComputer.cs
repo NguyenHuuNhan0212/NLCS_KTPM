@@ -319,7 +319,7 @@ namespace NimProject
         }
         private void FormPlayWithComputer_FormClosed(object sender, FormClosedEventArgs e)
         {
-            System.IO.File.Delete("state_game.txt");
+            //System.IO.File.Delete("state_game.txt");
             this.Hide();
             formStart.Show();
         }
@@ -371,7 +371,7 @@ namespace NimProject
 
         private void FormPlayWithComputer_FormClosing(object sender, FormClosingEventArgs e)
         {
-           
+         
         }
 
         private void timer_Tick(object sender, EventArgs e)

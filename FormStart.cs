@@ -26,7 +26,7 @@ namespace NimProject
             {
                 MessageBox.Show("Vui lòng chọn chế độ chơi", "Thông báo!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (indexMode == 0) 
+           else if (indexMode == 0) 
             {
                 int indexLevel = cboLevel.SelectedIndex;
                 if (indexLevel == -1) {
@@ -38,7 +38,8 @@ namespace NimProject
                     this.Hide();
                     formPlayWithComputer.Show();
                 }
-            }else
+            }
+           else
             {
                 int indexLevel = cboLevel.SelectedIndex;
                 if (indexLevel == -1) {
